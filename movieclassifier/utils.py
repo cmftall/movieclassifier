@@ -2,7 +2,7 @@
 """Utility functions."""
 
 from pathlib import Path
-from typing import Iterator, List, Options, Tuple
+from typing import Iterator, List, Optional, Tuple
 
 
 def stream_docs(path: Path) -> Iterator[Tuple[str, int]]:
@@ -28,7 +28,7 @@ def stream_docs(path: Path) -> Iterator[Tuple[str, int]]:
 
 def get_minibatch(
     doc_stream: Iterator[Tuple[str, int]], size: int
-) -> Tuple[Options[List[str]], Options[List[int]]]:
+) -> Tuple[Optional[List[str]], Optional[List[int]]]:
     """Give a particular number of documents specified by the size parameter.
 
     Args:
@@ -36,7 +36,7 @@ def get_minibatch(
         size (int): number of documents ot return
 
     Returns:
-        Tuple[Options[List[str]], Options[List[int]]]:
+        Tuple[Optional[List[str]], Optional[List[int]]]:
     """
     docs, y = [], []
     try:

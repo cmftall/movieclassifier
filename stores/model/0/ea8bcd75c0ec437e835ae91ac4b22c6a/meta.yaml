@@ -1,0 +1,15 @@
+artifact_uri: file:///Volumes/partition/projects/learning/movieclassifier/stores/model/0/ea8bcd75c0ec437e835ae91ac4b22c6a/artifacts
+end_time: 1621656980839
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: ea8bcd75c0ec437e835ae91ac4b22c6a
+run_uuid: ea8bcd75c0ec437e835ae91ac4b22c6a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1621656980290
+status: 3
+tags: []
+user_id: fallou

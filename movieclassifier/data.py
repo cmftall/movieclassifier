@@ -2,7 +2,7 @@
 """Implement the necessary data pre-processing."""
 
 import re
-from typing import Any
+from typing import Any, List
 
 from nltk.corpus import stopwords
 import numpy as np
@@ -12,14 +12,14 @@ from sklearn.feature_extraction.text import HashingVectorizer
 stop = stopwords.words("english")
 
 
-def tokenizer(text: str) -> list[str]:
+def tokenizer(text: str) -> List[str]:
     """Split text data word by word.
 
     Args:
         text (str): the text to split
 
     Returns:
-        list[str]: list of words
+        List[str]: list of words
     """
     text = re.sub("<[^>]*>", "", text)
     emoticons = re.findall("(?::|;|=)(?:-)?(?:\\)|\\(|D|P)", text.lower())
