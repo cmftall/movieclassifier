@@ -8,7 +8,7 @@ from nox.sessions import Session
 
 package = "movieclassifier"
 nox.options.sessions = "lint", "safety", "mypy", "pytype", "tests"
-locations = "tests", "noxfile.py"  # , "docs/conf.py"
+locations = "movieclassifier", "tests", "noxfile.py", "docs/conf.py"
 
 
 def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
@@ -91,7 +91,7 @@ def mypy(session: Session) -> None:
     session.run("mypy", *args)
 
 
-@nox.session(python="3.8")
+@nox.session(python="3.9")
 def pytype(session: Session) -> None:
     """Run the static type checker."""
     args = session.posargs or ["--disable=import-error", *locations]
@@ -134,9 +134,9 @@ def xdoctest(session: Session) -> None:
     session.run("python", "-m", "xdoctest", package, *args)
 
 
-# @nox.session(python="3.8")
-# def docs(session: Session) -> None:
-#     """Build the documentation."""
-#     session.run("poetry", "install", "--no-dev", external=True)
-#     install_with_constraints(session, "sphinx", "sphinx-autodoc-typehints")
-#     session.run("sphinx-build", "docs", "docs/_build")
+@nox.session(python="3.9")
+def docs(session: Session) -> None:
+    """Build the documentation."""
+    session.run("poetry", "install", "--no-dev", external=True)
+    install_with_constraints(session, "sphinx", "sphinx-autodoc-typehints")
+    session.run("sphinx-build", "docs", "docs/_build")

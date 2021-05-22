@@ -1,14 +1,15 @@
 # tagifai/utils.py
 """Utility functions."""
 
-from typing import Iterator, Tuple
+from pathlib import Path
+from typing import Iterator, List, Options, Tuple
 
 
-def stream_docs(path: str) -> Iterator[Tuple[str, int]]:
+def stream_docs(path: Path) -> Iterator[Tuple[str, int]]:
     """Reads in and return one document at a time.
 
     Args:
-        path (str): file path
+        path (Path): file path
 
     Yields:
         Iterator[Tuple[str, int]]: the review text and the corresponding class label
@@ -26,8 +27,8 @@ def stream_docs(path: str) -> Iterator[Tuple[str, int]]:
 
 
 def get_minibatch(
-    doc_stream: Iterator[tuple[str, int]], size: int
-) -> Tuple[list[str], list[int]]:
+    doc_stream: Iterator[Tuple[str, int]], size: int
+) -> Tuple[Options[List[str]], Options[List[int]]]:
     """Give a particular number of documents specified by the size parameter.
 
     Args:
@@ -35,7 +36,7 @@ def get_minibatch(
         size (int): number of documents ot return
 
     Returns:
-        tuple[list[str], list[int]]:
+        Tuple[Options[List[str]], Options[List[int]]]:
     """
     docs, y = [], []
     try:

@@ -3,6 +3,8 @@
 
 from pathlib import Path
 
+import mlflow
+
 from movieclassifier import config, data, eval, train, utils
 
 # Load data
@@ -16,10 +18,19 @@ X_test, y_test = utils.get_minibatch(doc_stream, size=5000)
 X_train = data.hash_vectorize(X_train)
 X_test = data.hash_vectorize(X_test)
 
-# Train model
-clf = train.train(X_train, y_train)
+# Tracking
 
-# # Evaluate model
+# Set experiment
+mlflow.set_experiment(experiment_name="baselines")
+# enable autologging
+mlflow.sklearn.autolog()
 
-accuracy = eval.evaluate(clf, X_test, y_test)
-print(f"Accuracy: {accuracy}")
+with mlflow.start_run() as run:
+    # Train model
+    clf = train.train(X_train, y_train)
+
+    # Evaluate model
+    accuracy = eval.evaluate(clf, X_test, y_test)
+    print(f"Accuracy: {accuracy}")
+    print()
+    print("Logged data and model in run: {}".format(run.info.run_id))

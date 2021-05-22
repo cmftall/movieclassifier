@@ -1,17 +1,15 @@
 # movieclassifier/data.py
-"""Implement the necessary data preprocessing."""
+"""Implement the necessary data pre-processing."""
 
 import re
 from typing import Any
 
 from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
 import numpy as np
 from sklearn.feature_extraction.text import HashingVectorizer
 
 
 stop = stopwords.words("english")
-porter = PorterStemmer()
 
 
 def tokenizer(text: str) -> list[str]:
@@ -36,7 +34,7 @@ def hash_vectorize(
     n_features: int = 2 ** 21,
     tokenizer: Any = tokenizer,
     preprocessor: Any = None,
-) -> HashingVectorizer:
+) -> np.ndarray:
     """Hash vectorize the data.
 
     Args:

@@ -1,3 +1,5 @@
+[![Tests](https://github.com/<your-username>/hypermodern-python/workflows/Tests/badge.svg)](https://github.com/cmftall/movieclassifier/actions?workflow=Tests)
+
 # movieclassifier
 
 Movie review classifier with MLOPS best practices
