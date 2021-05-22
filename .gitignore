@@ -1,5 +1,14 @@
+# MacOS
+.DS_Store
+*/.DS_Store
+**/.DS_Store
+
 # vscode
 .vscode/
+.idea
+
+# dvc
+dvcstore/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
