@@ -1,4 +1,7 @@
-[![Tests](https://github.com/<your-username>/hypermodern-python/workflows/Tests/badge.svg)](https://github.com/cmftall/movieclassifier/actions?workflow=CI)
+[![CI](https://github.com/cmftall/movieclassifier/workflows/CI/badge.svg)](https://github.com/cmftall/movieclassifier/actions?workflow=CI)
+
+[![Codecov](https://codecov.io/gh/cmftall/movieclassifier/branch/main/graph/badge.svg)](https://codecov.io/gh/cmftall/movieclassifier)
+
 
 # movieclassifier
 

@@ -19,8 +19,6 @@ pretty-errors = "^1.2.20"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-coverage = "^5.5"
-pytest-cov = "^2.12.0"
 black = "^21.5b1"
 flake8 = "^3.9.2"
 flake8-bandit = "^2.1.2"
@@ -36,6 +34,20 @@ darglint = "^1.8.0"
 xdoctest = "^0.15.4"
 Sphinx = "^4.0.1"
 sphinx-autodoc-typehints = "^1.12.0"
+coverage = {extras = ["toml"], version = "^5.5"}
+pytest-cov = "^2.12.0"
+codecov = "^2.1.11"
+
+[tool.coverage.paths]
+source = ["movieclassifier", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["movieclassifier"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
