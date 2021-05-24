@@ -1,0 +1,34 @@
+name: Coverage
+on: [push]
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+          architecture: x64
+      - name: Install nox
+        run: pip install nox==2020.12.31
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.1.1
+
+      - name: Cache Poetry virtualenv
+        uses: actions/cache@v1
+        id: cache
+        with:
+          path: ~/.virtualenvs
+          key: poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            poetry-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install Dependencies
+        run: poetry install
+        if: steps.cache.outputs.cache-hit != 'true'
+
+      - name: Test with nox
+        run: nox --sessions tests-3.9 coverage
+        env:
+          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
